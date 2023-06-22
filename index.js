@@ -9,12 +9,15 @@ $(document).ready(function () {
 
     $("body").bind('keypress',function(e) {
         if (e.keyCode == 65 || e.keyCode == 97 && game_started == false) {
-            resetGame();
-            $("body").removeClass("game-over");
-            game_started = true;
-            newLevel();
+            StartGame();
         }
     });
+
+    $(".start-button").click(function (e) {
+        if (game_started == false) {
+            StartGame();
+        }
+    })
 
 async function flashColors(colors) {
     
@@ -25,6 +28,14 @@ async function flashColors(colors) {
     }
 
     buttons_disabled = false;
+}
+
+function StartGame() {
+    resetGame();
+    $("body").removeClass("game-over");
+    game_started = true;
+    newLevel();
+    $(".start-button").toggleClass("start-visiblity")
 }
 
 function addColor(color_array) {
