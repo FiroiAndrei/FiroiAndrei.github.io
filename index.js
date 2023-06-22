@@ -9,15 +9,24 @@ $(document).ready(function () {
 
     $("body").bind('keypress',function(e) {
         if (e.keyCode == 65 || e.keyCode == 97 && game_started == false) {
-            StartGame();
+            startGame();
         }
     });
 
-    $(".start-button").click(function (e) {
+    $("#level-title").on("click", function () {
         if (game_started == false) {
-            StartGame();
+            startGame();
+            $(this).css("cursor", "default");
         }
-    })
+    });
+
+function startGame() { 
+    resetGame();
+    $("body").removeClass("game-over");
+    game_started = true;
+    newLevel();
+ }
+
 
 async function flashColors(colors) {
     
@@ -28,14 +37,6 @@ async function flashColors(colors) {
     }
 
     buttons_disabled = false;
-}
-
-function StartGame() {
-    resetGame();
-    $("body").removeClass("game-over");
-    game_started = true;
-    newLevel();
-    $(".start-button").toggleClass("start-visiblity")
 }
 
 function addColor(color_array) {
@@ -69,10 +70,12 @@ function Lose() {
     audio.play();
     $("body").addClass("game-over");
 
-    $("#level-title").text("Wrong, You lose!");
-    $("#level-subtitle").text("Press A to start again.");
+    $("#level-title").text("Click here or press 'A' to start again.");
+    $("#level-subtitle").text("Wrong, You lose!");
     game_started = false;
     buttons_disabled = true;
+    $("#level-title").css("cursor", "pointer");
+
 }
 
 function resetGame(){
@@ -80,7 +83,6 @@ function resetGame(){
     colors = [];
     level = 0;
     $("#level-subtitle").text("");
-
 }
 
 

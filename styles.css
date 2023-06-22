@@ -1,6 +1,7 @@
 body {
   text-align: center;
   background-color: #011F3F;
+  user-select: none;
 }
 
 #level-title, #level-subtitle {
@@ -8,6 +9,10 @@ body {
   font-size: 3rem;
   margin:  5%;
   color: #FEF2BF;
+}
+
+#level-title {
+  cursor: pointer;
 }
 
 .container {
@@ -52,34 +57,10 @@ body {
   background-color: grey;
 }
 
-.start-button {
-  font-family: 'Press Start 2P', cursive;
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
-  border-radius: 20%;
-  margin: 20px;
-}
-
-.start-visibility {
-  visibility: hidden;
-}
-
-
-.mobile-title {
-  display: none;
-}
-
 @media only screen and (max-width: 1200px) {
   .btn {
-    width: 300px;
-    height: 300px;
-  }
-  .desktop-title {
-    display: none;
-  }
-  .mobile-title {
-    display: inline;
+    width: 150px;
+    height: 150px;
   }
   
 }
